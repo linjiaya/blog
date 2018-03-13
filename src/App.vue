@@ -1,29 +1,53 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+	<!-- 挂载在#app下面 -->
+  <div class="app">
+		<!-- 固定的头 -->
+		<e-header></e-header>
+		<!-- 侧边栏 -->
+		<e-side-bar></e-side-bar>
+		<!-- 返回到界面顶部 -->
+		<e-go-top></e-go-top>
+    <!-- 路由入口 -->
     <router-view/>
   </div>
 </template>
+<script>
+import { mapActions } from 'vuex'
+export default {
+  name: 'App',
+  created() {
+    let vm = this
+    WebFont.load({
+      custom: {
+        families: ['Oswald-Regular']
+      },
+      loading() {
+        console.log('loading')
+      },
+      active() {
+        setTimeout(() => {
+          // 字体加载完
+          vm.change_fontload(true)
+        }, 1000)
+        console.log('font is active')
+      },
+      inactive() {
+        console.log('timeout')
+      },
+      timeout: 5000
+    })
+  },
+  methods: {
+    ...mapActions(['change_fontload'])
+  }
+}
+</script>
 
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+@import './assets/reset.scss';
+@import './assets/index.scss';
+@font-face {
+  font-family: 'Oswald-Regular';
+  src: url('./assets/font/Oswald-Regular.ttf');
 }
 </style>
