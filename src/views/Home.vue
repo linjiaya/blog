@@ -2,6 +2,7 @@
   <div class="wrapper">
 		<div class="site-intro">
 			<div class="site-intro-img"></div>
+      <div class="site-intro-placeholder"></div>
 			<div class="site-intro-meta">
 				<h1 :class="['intro-title', fontloaded ? 'font-loaded' : '']">fi3ework's Studio.</h1>
 				<p :class="['intro-subtitle', fontloaded ? 'font-loaded' : '']">it's better to burn out than to fade away</p>
@@ -98,6 +99,34 @@ export default {
   .intro-subtitle {
     font-size: torem(32px);
     transition-delay: 0.2s;
+  }
+
+  // 图片未加载完的动画效果
+  .site-intro-placeholder {
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: calc(100% + 300px);
+    height: 100%;
+    background: repeating-linear-gradient(
+      -45deg,
+      #444 0,
+      #444 80px,
+      #333 80px,
+      #333 160px
+    );
+    background-position: center center;
+    transform: translate3d(-226px, 0, 0);
+    animation: gradient-move 2.5s ease-out 0s 1;
+  }
+  @keyframes gradient-move {
+    0% {
+      transform: translate3d(-226px, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
   }
 }
 </style>

@@ -13,28 +13,32 @@
 </template>
 <script>
 import { mapActions } from 'vuex'
+import fontdebug from '@/debug'
 export default {
   name: 'App',
   created() {
     let vm = this
+    // 使用webfontloader加载自定义字体
+    // https://github.com/typekit/webfontloader#custom
     WebFont.load({
       custom: {
         families: ['Oswald-Regular']
       },
       loading() {
-        console.log('loading')
+        fontdebug('loading')
       },
       active() {
         setTimeout(() => {
           // 字体加载完
           vm.change_fontload(true)
-        }, 1000)
-        console.log('font is active')
+          fontdebug('font now is useable')
+        }, 500)
       },
       inactive() {
-        console.log('timeout')
+        fontdebug('timeout')
+        vm.change_fontload(true)
       },
-      timeout: 5000
+      timeout: 3000
     })
   },
   methods: {

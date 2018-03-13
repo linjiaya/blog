@@ -27,8 +27,7 @@ module.exports = {
 
   // vue-loader options
   // https://vue-loader.vuejs.org/en/options.html
-  vueLoader: {
-  },
+  vueLoader: {},
 
   // generate sourceMap for production build?
   productionSourceMap: true,
