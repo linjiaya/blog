@@ -9,7 +9,9 @@ body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, l
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
 }
-
+a {
+  color: #777;
+}
 html {
 	font-size: 16px;
 	font-family: -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB",STHeiti,"Microsoft YaHei","Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei",SimSun,sans-serif;

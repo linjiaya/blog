@@ -1,4 +1,8 @@
 import debug from 'debug'
-debug.enable('Custom-font:')
-const fontDebug = debug('Custom-font:')
-export default fontDebug
+debug.enable('Custom-font:,Vue-lifeCycle:')
+const fontdebug = debug('Custom-font:')
+const vuedebug = debug('Vue-lifeCycle:')
+export {
+  vuedebug,
+  fontdebug
+}

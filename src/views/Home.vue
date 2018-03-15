@@ -8,16 +8,31 @@
 				<p :class="['intro-subtitle', fontloaded ? 'font-loaded' : '']">it's better to burn out than to fade away</p>
 			</div>
 		</div>
+    <!-- 主容器 -->
+    <transition appear-active-class="fadeindown" appear>
+      <div class="container">
+        <main class="main home-page">
+          <e-artile></e-artile>
+        </main>
+        <e-profile></e-profile>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import eProfile from '@/components/e-profile'
+import eArticle from '@/components/e-article'
 export default {
   name: 'home',
-  components: {},
+  components: {
+    eProfile
+  },
   data() {
-    return {}
+    return {
+      test: false
+    }
   },
   computed: {
     ...mapState({
@@ -28,11 +43,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/mixin.scss';
-// @font-face {
-//   font-family: "Oswald-Regular";
-//   src: url("../assets/font/Oswald-Regular.ttf");
-// }
 
 .wrapper {
   position: relative;
@@ -42,6 +52,11 @@ export default {
   transition: all 0.3s ease-out 0s;
   // -3px看到x轴左移3px了.很微小.blur 为2px是一个不错的类border写法.
   box-shadow: -3px 0 2px 0 rgba(#000, 0.6);
+
+  // 当侧边栏激活时
+  &.side-bar-active {
+    transform: translate3d(400px, 0, 0);
+  }
 
   .site-intro {
     position: relative;
@@ -82,12 +97,37 @@ export default {
 
   .intro-title,
   .intro-subtitle {
+    position: relative;
     font-family: 'Oswald-Regular';
     color: #fff;
     // 初始状态不可见+存在向下的偏移
     opacity: 0;
     transform: translate(0, 1rem);
     transition: all 0.5s ease-out 0s;
+    cursor: pointer;
+
+    // 伪元素,一条白色下划线
+    &::after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: #fff;
+      // 从右边开始变换
+      // transform-origin: bottom right;
+      // 从中间开始变换
+      transform-origin: center;
+      transition: transform 0.3s ease-out 0s;
+    }
+    // 鼠标悬浮后的伪类效果
+    &:hover::after {
+      transform: scaleX(1);
+      // transform-origin: bottom left;
+      transform-origin: center;
+    }
 
     // 当webfont加载完字体时.添加一个font-loaded的状态
     &.font-loaded {
@@ -129,4 +169,30 @@ export default {
     }
   }
 }
+
+.container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  width: 100%;
+  padding: torem(48px);
+
+  .main {
+    width: 50%;
+    order: 1;
+  }
+}
+.fadeindown {
+  animation: fadeindown 1s ease-out 0s;
+}
+  @keyframes fadeindown {
+    0% {
+      transform: translate3d(0, 20px, 0);
+      opacity: 0;
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+    }
+  }
 </style>

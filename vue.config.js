@@ -27,7 +27,39 @@ module.exports = {
 
   // vue-loader options
   // https://vue-loader.vuejs.org/en/options.html
-  vueLoader: {},
+  vueLoader: {
+    loaders: {
+      scss: [
+        {
+          loader: 'vue-style-loader',
+          options: {
+            shadowMode: false,
+            sourceMap: false
+          }
+        },
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: false,
+            minimize: false
+          }
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: false
+          }
+        },
+        // 添加sass-resources-loader,将assets/mixin.scss注入到每个vue文件中
+        {
+          loader: 'sass-resources-loader',
+          options: {
+            resources: ['./src/assets/mixin.scss', './src/assets/var.scss']
+          }
+        }
+      ]
+    }
+  },
 
   // generate sourceMap for production build?
   productionSourceMap: true,

@@ -50,11 +50,6 @@
           {
             loader: 'vue-loader',
             options: {
-              postss: function () {console.log(1)},
-              preserveWhitespace: false,
-              template: {
-                doctype: 'html'
-              },
               loaders: {
                 css: [
                   {
@@ -114,6 +109,15 @@
                     loader: 'sass-loader',
                     options: {
                       sourceMap: false
+                    }
+                  },
+                  {
+                    loader: 'sass-resources-loader',
+                    options: {
+                      resources: [
+                        './src/assets/mixin.scss',
+                        './src/assets/var.scss'
+                      ]
                     }
                   }
                 ],
@@ -194,6 +198,10 @@
                     loader: 'babel-loader'
                   }
                 ]
+              },
+              preserveWhitespace: false,
+              template: {
+                doctype: 'html'
               },
               cssSourceMap: false,
               cssModules: {

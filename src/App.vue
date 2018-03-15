@@ -13,9 +13,18 @@
 </template>
 <script>
 import { mapActions } from 'vuex'
-import fontdebug from '@/debug'
+import { vuedebug, fontdebug } from '@/debug'
+import eHeader from '@/components/e-header'
+import eSideBar from '@/components/e-side-bar'
+import eGoTop from '@/components/e-go-top'
+
 export default {
   name: 'App',
+  components: {
+    eHeader,
+    eSideBar,
+    eGoTop
+  },
   created() {
     let vm = this
     // 使用webfontloader加载自定义字体
@@ -40,6 +49,18 @@ export default {
       },
       timeout: 3000
     })
+  },
+  mounted() {
+    vuedebug('App.vue mounted')
+    const body = document.querySelector('body')
+    // 获取元素距离文档顶部的位置
+    const headerHeight = document.querySelector('.site-intro').offsetTop + document.querySelector('.site-intro').offsetHeight
+    body.addEventListener('scroll', () => {
+      const topHeight = document.body.scrollTop || document.documentElement.scrollTop
+      if (topHeight > headerHeight) {
+        // 已经划过
+      }
+    }, false)
   },
   methods: {
     ...mapActions(['change_fontload'])
