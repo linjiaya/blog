@@ -1,21 +1,32 @@
 <template>
   <header class="e-header">
     <div class="read-progress"></div>
-    <div class="header-sidebar-menu"><span class="arrow-right"></span></div>
-    <a href="/" class="home-link">eliaztray.cn</a>
+    <div class="header-sidebar-menu" :class="{'is-slide': overHeight}">
+      <e-svg name="s-arrow-right" :size="24"></e-svg>
+    </div>
+    <router-link to="/" v-if="!overHeight">
+      <a class="home-link">eliaztray.cn</a>
+    </router-link>
   </header>
 </template>
 
 <script>
+import eSvg from '@/components/e-svg'
+import { mapState } from 'vuex'
 export default {
   name: 'e-header',
   data() {
-    return {
-    }
+    return {}
+  },
+  components: {
+    eSvg
   },
   // 组件挂载阶段
-  mounted() {
-
+  mounted() {},
+  computed: {
+    ...mapState({
+      overHeight: state => state.overHeight
+    })
   }
 }
 </script>
@@ -52,9 +63,17 @@ export default {
 
     &:hover {
       background: #fff;
+      color: #000;
+    }
 
-      .arrow-right {
-        border-color: #000;
+    &.is-slide {
+      color: #000;
+      border: 2px solid #000;
+      background: #fff;
+
+      &:hover {
+        background: #000;
+        color: #fff;
       }
     }
   }
@@ -78,7 +97,7 @@ export default {
     top: 50%;
     right: torem(40px);
     transform: translate(0, -50%);
-    font-family: "Oswald-Regular";
+    font-family: 'Oswald-Regular';
     font-size: torem(22px);
     color: #fff;
     cursor: pointer;

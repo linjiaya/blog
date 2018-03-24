@@ -6,42 +6,76 @@
 			<div class="site-intro-meta">
 				<h1 :class="['intro-title', fontloaded ? 'font-loaded' : '']">fi3ework's Studio.</h1>
 				<p :class="['intro-subtitle', fontloaded ? 'font-loaded' : '']">it's better to burn out than to fade away</p>
+        <p class="post-intro-meta"></p>
 			</div>
 		</div>
     <!-- 主容器 -->
     <transition appear-active-class="fadeindown" appear>
       <div class="container">
-        <main class="main home-page">
-          <e-article class="e-article" v-for="n in 5" :key="n"></e-article>
+        <main class="main post-page">
+          <article class="article-entry" v-html="html" v-highlight></article>
           <e-pagination></e-pagination>
         </main>
-        <e-profile></e-profile>
       </div>
     </transition>
+
+    <!-- <textarea rows="80" cols="60" :value="post" @input="e => { html = marked(e.target.value),  post = e.target.value }"></textarea> -->
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import eProfile from '@/components/e-profile'
-import eArticle from '@/components/e-article'
 import ePagination from '@/components/e-pagination'
+import marked from 'marked'
+import hljs from 'highlightjs'
+console.log(hljs)
+
 export default {
   name: 'home',
   components: {
-    eProfile,
-    eArticle,
     ePagination
   },
   data() {
     return {
-      test: false
+      html: '',
+      test: false,
+      post: marked(`
+                    \`\`\`less
+                    @import "fruits";
+
+                    @rhythm: 1.5em;
+
+                    @media screen and (min-resolution: 2dppx) {
+                        body {font-size: 125%}
+                    }
+
+                    section > .foo + #bar:hover [href*="less"] {
+                        margin:     @rhythm 0 0 @rhythm;
+                        padding:    calc(5% + 20px);
+                        background: #f00ba7 url(http://placehold.alpha-centauri/42.png) no-repeat;
+                        background-image: linear-gradient(-135deg, wheat, fuchsia) !important ;
+                        background-blend-mode: multiply;
+                    }
+
+                    @font-face {
+                        font-family: /* ? */ 'Omega';
+                        src: url('../fonts/omega-webfont.woff?v=2.0.2');
+                    }
+
+                    .icon-baz::before {
+                        display:     inline-block;
+                        font-family: "Omega", Alpha, sans-serif;
+                        content:     "\f085";
+                        color:       rgba(98, 76 /* or 54 */, 231, .75);
+                    }
+                    \`\`\``),
+      marked: marked
     }
   },
+  created() {},
   computed: {
     ...mapState({
-      fontloaded: state => state.fontLoaded,
-      overHeight: state => state.overHeight
+      fontloaded: state => state.fontLoaded
     })
   }
 }
@@ -201,6 +235,16 @@ export default {
   100% {
     transform: translate3d(0, 0, 0);
     opacity: 1;
+  }
+}
+textarea {
+  font-family: 'Oswald-Regular';
+}
+</style>
+<style lang="scss">
+pre {
+  code {
+    font-family: 'Oswald-Regular';
   }
 }
 </style>

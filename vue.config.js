@@ -103,7 +103,9 @@ module.exports = {
     hotOnly: false,
     // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
     proxy: null, // string | Object
-    before: app => {}
+    before: app => {
+      console.log(app)
+    }
   },
 
   // options for 3rd party plugins

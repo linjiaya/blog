@@ -6,13 +6,13 @@
 		<!-- 侧边栏 -->
 		<e-side-bar></e-side-bar>
 		<!-- 返回到界面顶部 -->
-		<e-go-top></e-go-top>
+		<e-go-top v-show="showSlider"></e-go-top>
     <!-- 路由入口 -->
     <router-view/>
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import { vuedebug, fontdebug } from '@/debug'
 import eHeader from '@/components/e-header'
 import eSideBar from '@/components/e-side-bar'
@@ -24,6 +24,11 @@ export default {
     eHeader,
     eSideBar,
     eGoTop
+  },
+  computed: {
+    ...mapState({
+      showSlider: state => state.overHeight
+    })
   },
   created() {
     let vm = this
@@ -52,18 +57,29 @@ export default {
   },
   mounted() {
     vuedebug('App.vue mounted')
-    const body = document.querySelector('body')
     // 获取元素距离文档顶部的位置
-    const headerHeight = document.querySelector('.site-intro').offsetTop + document.querySelector('.site-intro').offsetHeight
-    body.addEventListener('scroll', () => {
-      const topHeight = document.body.scrollTop || document.documentElement.scrollTop
-      if (topHeight > headerHeight) {
-        // 已经划过
-      }
-    }, false)
+    const headerHeight =
+      document.querySelector('.site-intro').offsetTop +
+      document.querySelector('.site-intro').offsetHeight
+    // todo: add debounce
+    window.addEventListener(
+      'scroll',
+      () => {
+        const topHeight =
+          document.body.scrollTop || document.documentElement.scrollTop
+        vuedebug('scroll is excuted')
+        if (topHeight > headerHeight) {
+          // 已经划过
+          this.change_overheight(true)
+        } else {
+          this.change_overheight(false)
+        }
+      },
+      false
+    )
   },
   methods: {
-    ...mapActions(['change_fontload'])
+    ...mapActions(['change_fontload', 'change_overheight'])
   }
 }
 </script>

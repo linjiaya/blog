@@ -27,7 +27,7 @@ export default {
   components: {
     eSvg
   },
-  data () {
+  data() {
     return {
       social: ['email', 'github', 'wechat']
     }
@@ -38,7 +38,7 @@ export default {
 <style lang="scss">
 .profile {
   width: 200px;
-  font: torem(16px) "Oswald-Regular";
+  font: torem(16px) 'Oswald-Regular';
 
   .profile-avatar {
     display: block;
@@ -65,7 +65,7 @@ export default {
     // justify-content: center;
     align-items: center;
     padding: torem(8px) 0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   .icon-link {
     display: inline-block;
@@ -74,7 +74,7 @@ export default {
     cursor: pointer;
 
     &:hover {
-      color:#0cb49d;
+      color: #0cb49d;
     }
   }
 
@@ -96,6 +96,5 @@ export default {
       font-weight: bold;
     }
   }
-
 }
 </style>
