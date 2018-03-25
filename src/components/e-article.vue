@@ -1,18 +1,23 @@
 <template>
   <article class="abstract-item">
-    <a href="" class="abstract-title">
-      <e-svg name="stick" v-if="stick"></e-svg>
-      <span>Images</span>
-    </a>
-    <p class="abstract-content">This post doesn’t have a title. Make sure it’s accessible.</p>
+    <router-link :to="`/post/${id}`">
+      <a href="" class="abstract-title">
+        <e-svg name="stick" v-if="stick"></e-svg>
+        <span>{{title}}</span>
+      </a>
+    </router-link>
+    <p class="abstract-content">{{meta}}</p>
     <div class="abstract-post-meta">
       <div class="abstract-date">
         <e-svg name="date" :size="20"></e-svg>
-        <span class="abstract-time">2013/12/26</span>
+        <span class="abstract-time">{{date}}</span>
       </div>
       <div class="abstract-tags">
-        <e-tag>#hexo</e-tag>
-        <e-tag>#hexo-theme-archer</e-tag>
+        <e-tag v-for="tag in tags" :key="tag">
+          <router-link :to="`/?tag=${tag}`">
+            {{'#' + tag}}
+          </router-link>
+        </e-tag>
       </div>
     </div>
   </article>
@@ -31,6 +36,27 @@ export default {
     stick: {
       type: Boolean,
       default: false
+    },
+    id: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    meta: {
+      type: String
+    },
+    date: {
+      type: Number,
+      default: +new Date()
+    },
+    tags: {
+      type: Array,
+      default() {
+        return []
+      }
     }
   }
 }

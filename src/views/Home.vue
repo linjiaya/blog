@@ -12,7 +12,8 @@
     <transition appear-active-class="fadeindown" appear>
       <div class="container">
         <main class="main home-page">
-          <e-article class="e-article" v-for="n in 5" :key="n"></e-article>
+          <e-article class="e-article"
+          v-for="(article, articleIndex) in articleList" :key="articleIndex" v-bind="article"></e-article>
           <e-pagination></e-pagination>
         </main>
         <e-profile></e-profile>
@@ -22,10 +23,14 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import eProfile from '@/components/e-profile'
 import eArticle from '@/components/e-article'
 import ePagination from '@/components/e-pagination'
+import debug from 'debug-miniapp'
+debug.enable('Home.vue:')
+// const log = debug('Home.vue:')
+
 export default {
   name: 'home',
   components: {
@@ -41,7 +46,21 @@ export default {
   computed: {
     ...mapState({
       fontloaded: state => state.fontLoaded,
-      overHeight: state => state.overHeight
+      overHeight: state => state.overHeight,
+      articleList: state => state.filterList
+    })
+  },
+  watch: {
+    $route: {
+      handler(to) {
+        this.fetchList(to.query)
+      },
+      immediate: true
+    }
+  },
+  methods: {
+    ...mapActions({
+      fetchList: 'fetch_articlelist'
     })
   }
 }
