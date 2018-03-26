@@ -12,9 +12,12 @@
     <transition appear-active-class="fadeindown" appear>
       <div class="container">
         <main class="main home-page">
-          <e-article class="e-article"
-          v-for="(article, articleIndex) in articleList" :key="articleIndex" v-bind="article"></e-article>
-          <e-pagination></e-pagination>
+          <transition-group name="article-list" tag="p" class="flex">
+            <e-article class="e-article"
+            v-for="article in articleList" :key="article.id" v-bind="article"></e-article>
+            <!-- 和article-list保持同步 -->
+          <e-pagination key="pagination" class="transition"></e-pagination>
+          </transition-group>
         </main>
         <e-profile></e-profile>
       </div>
@@ -40,7 +43,7 @@ export default {
   },
   data() {
     return {
-      test: false
+      test: false,
     }
   },
   computed: {
@@ -204,13 +207,14 @@ export default {
     margin-left: torem(48px);
   }
   .e-article {
-    &:first-child {
-      padding-top: 0;
-    }
+    transition: transform 1s;
   }
 }
 .fadeindown {
   animation: fadeindown 1s ease-out 0s;
+}
+.fadeOutUp {
+  animation: fadeOutUp 1s ease-out 0s;
 }
 @keyframes fadeindown {
   0% {
@@ -221,5 +225,36 @@ export default {
     transform: translate3d(0, 0, 0);
     opacity: 1;
   }
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+.article-list-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.article-list-leave-to {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.article-list-leave-active {
+  position: absolute;
+}
+.flex {
+  display: flex;
+  flex-flow: column nowrap;
+  // 将第一篇article的padding-top重置
+  margin-top: torem(-16px);
+}
+.transition {
+  transition: transform 1s;
 }
 </style>

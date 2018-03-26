@@ -64,7 +64,6 @@ export default {
 
 <style lang="scss" scoped>
 .abstract-item {
-  position: relative;
   padding: torem(16px) 0 torem(8px) 0;
   border-bottom: 1px dashed rgba(#000, 0.2);
 
