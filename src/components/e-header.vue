@@ -1,9 +1,10 @@
 <template>
   <header class="e-header">
     <div class="read-progress"></div>
-    <div class="header-sidebar-menu" :class="{'is-slide': overHeight}">
+    <!-- 替换为tag搜索. -->
+    <!-- <div class="header-sidebar-menu" :class="{'is-slide': overHeight}">
       <e-svg name="s-arrow-right" :size="24"></e-svg>
-    </div>
+    </div> -->
     <router-link to="/" v-if="!overHeight">
       <a class="home-link">eliaztray.cn</a>
     </router-link>

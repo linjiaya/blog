@@ -43,7 +43,7 @@ export default {
   },
   data() {
     return {
-      test: false,
+      test: false
     }
   },
   computed: {
@@ -88,7 +88,7 @@ export default {
     position: relative;
     width: 100%;
     // 视口高度的一半
-    height: 50vh;
+    height: 100vh;
     z-index: 3;
     overflow: hidden;
     box-shadow: 0 0 2px 0 rgba(#000, 0.6);
@@ -226,7 +226,6 @@ export default {
     opacity: 1;
   }
 }
-
 @keyframes fadeOutUp {
   from {
     opacity: 1;
@@ -236,7 +235,6 @@ export default {
     transform: translate3d(0, -100%, 0);
   }
 }
-
 .article-list-enter {
   opacity: 0;
   transform: translate3d(100%, 0, 0);
@@ -250,8 +248,7 @@ export default {
 }
 .flex {
   display: flex;
-  flex-flow: column nowrap;
-  // 将第一篇article的padding-top重置
+  flex-flow: column nowrap; // 将第一篇article的padding-top重置
   margin-top: torem(-16px);
 }
 .transition {
