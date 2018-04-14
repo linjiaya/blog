@@ -57,6 +57,7 @@ export default {
   },
   mounted() {
     vuedebug('App.vue mounted')
+    console.log('app.vue')
     // 获取元素距离文档顶部的位置
     const headerHeight =
       document.querySelector('.site-intro').offsetTop +
@@ -67,7 +68,7 @@ export default {
       () => {
         const topHeight =
           document.body.scrollTop || document.documentElement.scrollTop
-        vuedebug('scroll is excuted')
+        vuedebug('scroll is excuted', topHeight, headerHeight)
         if (topHeight > headerHeight) {
           // 已经划过
           this.change_overheight(true)

@@ -26,7 +26,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import ePagination from '@/components/e-pagination'
-import marked from 'marked'
+// import marked from 'marked'
 // import hljs from 'highlightjs'
 
 export default {

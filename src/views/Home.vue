@@ -88,7 +88,7 @@ export default {
     position: relative;
     width: 100%;
     // 视口高度的一半
-    height: 100vh;
+    height: 50vh;
     z-index: 3;
     overflow: hidden;
     box-shadow: 0 0 2px 0 rgba(#000, 0.6);

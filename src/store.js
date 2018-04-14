@@ -49,7 +49,7 @@ export default new Vuex.Store({
      */
     [GET_FILTERLIST](state, payload) {
       let filterList = []
-      const { p, tag, category } = payload
+      const { tag, category } = payload
       const getFilterList = (articleList, key) => name => {
         console.log(name)
         const names = name.split(',')
