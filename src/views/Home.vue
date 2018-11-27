@@ -4,7 +4,7 @@
 			<div class="site-intro-img"></div>
       <div class="site-intro-placeholder"></div>
 			<div class="site-intro-meta">
-				<h1 :class="['intro-title', fontloaded ? 'font-loaded' : '']">fi3ework's Studio.</h1>
+				<h1 :class="['intro-title', fontloaded ? 'font-loaded' : '']">EliazTray</h1>
 				<p :class="['intro-subtitle', fontloaded ? 'font-loaded' : '']">it's better to burn out than to fade away</p>
 			</div>
 		</div>
