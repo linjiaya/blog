@@ -15,40 +15,73 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
   </li>
 </div>
 
-<div style="text-align: center">
-</div>
+# 初步设想设计
 
-<div class="features">
-  <div class="feature">
-    <h2>Simplicity First</h2>
-    <p>Minimal setup with markdown-centered project structure helps you focus on writing.</p>
-  </div>
-  <div class="feature">
-    <h2>Vue-Powered</h2>
-    <p>Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.</p>
-  </div>
-  <div class="feature">
-    <h2>Performan2t</h2>
-    <p>VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.</p>
-  </div>
-</div>
+[Wow Desgin](https://ktquez.com/en/)
 
-### As Easy as 1, 2, 3
+[Theme Search](https://github.com/search?q=vuepress+theme)
 
-``` bash
-# install
-yarn global add vuepress@next
-# OR npm install -g vuepress@next
+### layout 布局
 
-# create a markdown file
-echo '# Hello VuePress' > README.md
+`theme` 文件夹下的组件是自定义的theme 主题。 当 `markdown` 中的 `frontMatter` 中定义 layout 的时候。例如
 
-# start writing
-vuepress dev
-
-# build to static files
-vuepress build
+```markdown
+---
+layout: Post
+---
 ```
+
+
+则此 markdown 将采用 theme -> layouts -> Post.vue 作为其布局组件，如果没有找到，则去当前主题继承的主题中查找.
+
+### 首页
+
+Home 主页需要重新编排。做一个比较具有特色的风格
+
+- 分类列表，类似 alligator.io首页的模式
+- 搜索🔍功能，利用 headers-plugin 提供服务
+- recentPost list(卡片List？)
+- 背景做一个组件。 动态的，可以是canvas 粒子绘制背景 or 动漫背景图?
+
+
+
+#### Post页面
+
+这个是一般的 文章页面的布局, `permanlink` :/year/:month/:day/:slug , 日期 + 蛞蝓化标题
+
+
+
+- TOC Headers列表，有插件提供
+- 摘注 `$page.excerpt` 提供 => 组件
+- 代码高亮 (css 配置)， 代码抽取已经经过 markdown-it 处理过了 => 选一个Ok 的 风格
+- 其他 markdown-it-xxx plugin 的能力
+
+
+
+#### Tag页面
+
+/tag/:slug
+
+
+
+>  Extends Post.vue
+
+
+
+#### Tags 页面
+
+/tags/
+
+这个是该标签对应的分类页面.
+
+> 可以简单的有一个相关的该分类下的文章list.
+
+
+
+#### Categories 页面
+
+暂无 同Tags
+
 
 ::: warning COMPATIBILITY NOTE
 VuePress requires Node.js >= 8.
