@@ -29,8 +29,11 @@
     "babel-jest": "^22.0.4",
     "chalk": "^2.3.2",
     "debug": "^3.1.0",
+    "lodash-es": "^4.17.11",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.5.13",
     "vuepress": "^1.0.0-alpha.25"
   },

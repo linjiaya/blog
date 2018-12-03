@@ -11,7 +11,8 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 <div class="tag-lists">
   <h1>这里可以打印出文章所有使用的tag 和 此分类对应的位置，同时还可以知道该分类下具有多少文章</h1>
   <li v-for="(value, key) of $tags._metaMap" :key="key">
-    {{key}}: {{value.path}} => <a style="color:red" v-for="(post, index) in value.posts" :key="index" :href="post.path">{{post.title}}<OutboundLink /></a>
+  <a style="color:cyan" :href="value.path">{{key}}: {{value.path}}<OutboundLink /> </a>
+    => <a style="color:red" v-for="(post, index) in value.posts" :key="index" :href="post.path">{{post.title}}<OutboundLink /></a>
   </li>
 </div>
 
@@ -62,6 +63,8 @@ Home 主页需要重新编排。做一个比较具有特色的风格
 
 /tag/:slug
 
+风格如下
+<img :src="$withBase('/tag.png')" alt="foo">
 
 
 >  Extends Post.vue
@@ -80,11 +83,15 @@ Home 主页需要重新编排。做一个比较具有特色的风格
 
 #### Categories 页面
 
-暂无 同Tags
+category从维度来讲是主分类，tags进行辅助分类
 
 
 ::: warning COMPATIBILITY NOTE
 VuePress requires Node.js >= 8.
 :::
+
+#### frontMatter generator
+
+- 自动生成 author, title, tags, categories
 
 <img src="./logo.png">
