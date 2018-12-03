@@ -11,9 +11,13 @@
           <!-- TODO: 通过 ga(Google Analysis)获取每个界面的UV，通过提供的API获取相应的文章阅读数目 -->
           <span>pv: 1099</span>
 
-          <!-- 通过给content设置page-key,可以渲染出这个post的内容 -->
         </router-link>
-        <Content class="post-content" :page-key="post.key"></Content>
+      </li>
+    </ul>
+    <ul>
+      <li v-for="(post, index) in posts" :key="index">
+        <!-- 通过给content设置page-key,可以渲染出这个post的内容 -->
+        <!-- <Content class="post-content" :page-key="post.key"></Content> -->
       </li>
     </ul>
   </div>
@@ -30,6 +34,9 @@ export default {
   }
 }
 </script>
+
+
+<style lang="stylus" src="@parent-theme/styles/theme.styl"></style>
 
 <style lang="scss">
 @import '../styles/theme.scss';

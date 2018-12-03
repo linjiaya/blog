@@ -9,14 +9,8 @@ export default {
   name: 'Tags'
 }
 </script>
-
-<style lang="stylus" src="@parent-theme/styles/code.styl">
-</style>
-
-
+<style lang="stylus" src="@parent-theme/styles/theme.styl"></style>
 <style lang="scss">
 @import '../styles/theme.scss';
 </style>
-<style>
 
-</style>
