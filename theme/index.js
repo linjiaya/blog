@@ -13,6 +13,11 @@ module.exports = {
         // 变量注入到 $page.lastUpdated
         return dayjs(timestamp).format('YYYY-MM-DD HH:mm:ss');
       }
-    }
+    },
+    '@vuepress/pwa': {
+      serviceWorker: true,
+      // popupComponent: 'MySWUpdatePopup'
+      updatePopup: true,
+    },
   },
 };
