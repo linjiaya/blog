@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vuepress build blog",
     "lint": "vue-cli-service lint",
     "dev": "vuepress dev blog",
-    "dev:debug": "node --inspect-brk ./node-modules/.bin/vuepress dev blog",
     "lint:js": "eslint .",
-    "lint:css": "stylelint '**/*.{vue,scss}'"
+    "lint:css": "stylelint '**/*.{vue,scss}'",
+    "lint:md": "prettier --write '**/*.md'",
+    "serve": "vue-cli-service serve"
   },
   "dependencies": {
     "highlightjs": "^9.10.0",
