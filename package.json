@@ -56,7 +56,7 @@
       "vue-cli-service lint",
       "git add"
     ],
-    "*.{scss,vue}": [
+    "*.{scss,vue,md}": [
       "stylelint --fix",
       "git add"
     ],
