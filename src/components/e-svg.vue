@@ -6,27 +6,27 @@
 
 <script>
 export default {
-  name: 'e-svg',
-  props: {
-    name: {
-      type: String,
-      required: true
-    },
-    size: {
-      type: Number,
-      default: 24
-    }
-  }
-}
+	name: 'e-svg',
+	props: {
+		name: {
+			type: String,
+			required: true
+		},
+		size: {
+			type: Number,
+			default: 24
+		}
+	}
+};
 </script>
 
 <style scoped>
 /* symbol icon */
 .icon {
+  overflow: hidden;
   width: 1em;
   height: 1em;
-  vertical-align: -0.15em;
   fill: currentColor;
-  overflow: hidden;
+  vertical-align: -0.15em;
 }
 </style>

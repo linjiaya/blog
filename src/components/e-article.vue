@@ -24,42 +24,42 @@
 </template>
 
 <script>
-import eSvg from './e-svg'
-import eTag from './e-tag'
+import eSvg from './e-svg';
+import eTag from './e-tag';
 export default {
-  name: 'e-article',
-  components: {
-    eSvg,
-    eTag
-  },
-  props: {
-    stick: {
-      type: Boolean,
-      default: false
-    },
-    id: {
-      type: String,
-      required: true
-    },
-    title: {
-      type: String,
-      required: true
-    },
-    meta: {
-      type: String
-    },
-    date: {
-      type: Number,
-      default: +new Date()
-    },
-    tags: {
-      type: Array,
-      default() {
-        return []
-      }
-    }
-  }
-}
+	name: 'e-article',
+	components: {
+		eSvg,
+		eTag
+	},
+	props: {
+		stick: {
+			type: Boolean,
+			default: false
+		},
+		id: {
+			type: String,
+			required: true
+		},
+		title: {
+			type: String,
+			required: true
+		},
+		meta: {
+			type: String
+		},
+		date: {
+			type: Number,
+			default: Number(new Date())
+		},
+		tags: {
+			type: Array,
+			default() {
+				return [];
+			}
+		}
+	}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -68,9 +68,9 @@ export default {
   border-bottom: 1px dashed rgba(#000, 0.2);
 
   .abstract-title {
-    line-height: torem(40px);
-    color: #787878;
     padding-bottom: torem(8px);
+    color: #787878;
+    line-height: torem(40px);
 
     span {
       font-size: torem(28px);
@@ -85,23 +85,24 @@ export default {
   .abstract-content {
     color: #9c9c9c;
     font-size: torem(16px);
+    font-weight: lighter;
     line-height: torem(26px);
     word-break: break-word;
-    font-weight: lighter;
   }
 
   .abstract-time {
     padding: 0 0 0 torem(4px);
   }
+
   .abstract-post-meta {
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: torem(8px) 0 0 0;
-    font-family: 'Oswald-Regular';
-    color: #aaa;
     height: 32px;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: torem(8px) 0 0 0;
+    color: #aaa;
+    font-family: 'Oswald-Regular';
   }
 }
 </style>

@@ -29,12 +29,12 @@ input,
 select,
 figure,
 figcaption {
-  list-style: none;
   box-sizing: border-box;
   padding: 0;
-  border: none;
   margin: 0;
-  text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
+  border: none;
   -webkit-font-smoothing: antialiased;
+  list-style: none;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
 }

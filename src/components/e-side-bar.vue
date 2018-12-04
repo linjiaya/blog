@@ -4,9 +4,6 @@
 
 <script>
 export default {
-  name: 'e-side-bar'
-}
+	name: 'e-side-bar'
+};
 </script>
-
-<style>
-</style>

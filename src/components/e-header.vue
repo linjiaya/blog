@@ -12,36 +12,39 @@
 </template>
 
 <script>
-import eSvg from '@/components/e-svg'
-import { mapState } from 'vuex'
+import eSvg from '@/components/e-svg';
+import {mapState} from 'vuex';
 export default {
-  name: 'e-header',
-  data() {
-    return {}
-  },
-  components: {
-    eSvg
-  },
-  // 组件挂载阶段
-  mounted() {},
-  computed: {
-    ...mapState({
-      overHeight: state => state.overHeight
-    })
-  }
-}
+	name: 'e-header',
+	data() {
+		return {
+
+		};
+	},
+	components: {
+		// eslint-disable
+		eSvg
+	},
+	// 组件挂载阶段
+	mounted() {},
+	computed: {
+		...mapState({
+			overHeight: state => state.overHeight
+		})
+	}
+};
 </script>
 
 <style lang="scss">
 .e-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   z-index: 10;
+  top: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
   width: 100%;
   height: torem(56px);
-  overflow: hidden;
   transform: translate3d(0, 0, 0);
   transition: transform 0.3s ease-out 0s;
 
@@ -51,16 +54,16 @@ export default {
 
   .header-sidebar-menu {
     position: absolute;
-    left: 1rem;
+    z-index: 21;
     top: 50%;
-    border: 2px solid #fff;
+    left: 1rem;
     width: torem(28px);
     height: torem(28px);
-    transform: translate(0, -50%);
+    border: 2px solid #fff;
     color: #fff;
-    text-align: center;
-    z-index: 21;
     cursor: pointer;
+    text-align: center;
+    transform: translate(0, -50%);
 
     &:hover {
       background: #fff;
@@ -68,9 +71,9 @@ export default {
     }
 
     &.is-slide {
-      color: #000;
       border: 2px solid #000;
       background: #fff;
+      color: #000;
 
       &:hover {
         background: #000;
@@ -85,23 +88,23 @@ export default {
     display: inline-block;
     width: torem(10px);
     height: torem(10px);
-    border-bottom: 2px solid #fff;
     border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
     border-radius: 1px;
-    transform-origin: center;
     // 发现transform是从右边执行变换效果的.
     transform: translate(-2px, 2px) rotate(-45deg);
+    transform-origin: center;
   }
 
   .home-link {
     position: absolute;
     top: 50%;
     right: torem(40px);
-    transform: translate(0, -50%);
-    font-family: 'Oswald-Regular';
-    font-size: torem(22px);
     color: #fff;
     cursor: pointer;
+    font-family: 'Oswald-Regular';
+    font-size: torem(22px);
+    transform: translate(0, -50%);
 
     &:hover {
       color: var(--theme-color);

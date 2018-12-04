@@ -21,18 +21,18 @@
 </template>
 
 <script>
-import eSvg from './e-svg'
+import eSvg from './e-svg';
 export default {
-  name: 'e-profile',
-  components: {
-    eSvg
-  },
-  data() {
-    return {
-      social: ['email', 'github', 'wechat']
-    }
-  }
-}
+	name: 'e-profile',
+	components: {
+		eSvg
+	},
+	data() {
+		return {
+			social: ['email', 'github', 'wechat']
+		};
+	}
+};
 </script>
 
 <style lang="scss">
@@ -48,10 +48,10 @@ export default {
   }
 
   .profile-name {
-    font-size: torem(32px);
-    line-height: torem(48px);
     padding: torem(8px) 0 0 0;
     color: #333;
+    font-size: torem(32px);
+    line-height: torem(48px);
     text-align: center;
   }
 
@@ -67,6 +67,7 @@ export default {
     padding: torem(8px) 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
+
   .icon-link {
     display: inline-block;
     width: torem(24px);

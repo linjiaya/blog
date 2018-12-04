@@ -7,17 +7,17 @@
 
 <script>
 export default {
-  name: 'e-tag'
-}
+	name: 'e-tag'
+};
 </script>
 
 <style lang="scss" scoped>
 .tag {
   position: relative;
+  margin-left: torem(6.4px);
   color: #aaa;
   font-size: torem(16px);
   font-weight: lighter;
-  margin-left: torem(6.4px);
   transition: color 0.4s ease-out;
 
   &:hover {
