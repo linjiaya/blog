@@ -46,7 +46,7 @@ Home 主页需要重新编排。做一个比较具有特色的风格
 
 #### Categories 页面
 
-暂无 同 Tags
+分类列表界面
 
 #### package.json
 
