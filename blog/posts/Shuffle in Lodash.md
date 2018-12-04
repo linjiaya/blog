@@ -1,8 +1,10 @@
 ---
 title: Shuffle in lodash
 date: 2017-11-22 18:20:28
+category: Javascript
 tags:
-  - node
+  - Lodash
+  - Array
 # layout: layout
 ---
 

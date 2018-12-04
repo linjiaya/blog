@@ -29,6 +29,7 @@
     "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.24",
     "babel-eslint": "^10.0.1",
     "chalk": "^2.3.2",
+    "dayjs": "^1.7.7",
     "debug": "^3.1.0",
     "eslint": "^5.8.0",
     "eslint-config-xo": "^0.25.1",
@@ -56,7 +57,7 @@
       "vue-cli-service lint",
       "git add"
     ],
-    "*.{scss,vue}": [
+    "*.{scss,vue,md}": [
       "stylelint --fix",
       "git add"
     ],

@@ -1,9 +1,6 @@
 ---
 title: Hello World
 date: 2017-11-21 09:47:48
-tags:
-  - book
-  - world
 permalink: /hello-world
 ---
 
