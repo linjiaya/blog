@@ -13,6 +13,12 @@ module.exports = {
         // 变量注入到 $page.lastUpdated
         return dayjs(timestamp).format('YYYY-MM-DD HH:mm:ss');
       }
-    }
+    },
+    '@vuepress/pwa': {
+      serviceWorker: true,
+      // 因为下面这个配置的逗号未添加，找错找了2小时:(
+      popupComponent: 'MySWUpdatePopup',
+      updatePopup: true,
+    },
   },
 };
