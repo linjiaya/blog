@@ -16,7 +16,8 @@ module.exports = {
     },
     '@vuepress/pwa': {
       serviceWorker: true,
-      // popupComponent: 'MySWUpdatePopup'
+      // 因为下面这个配置的逗号未添加，找错找了2小时:(
+      popupComponent: 'MySWUpdatePopup',
       updatePopup: true,
     },
   },

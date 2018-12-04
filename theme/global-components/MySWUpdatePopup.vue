@@ -2,9 +2,10 @@
   <SWUpdatePopup>
     <div
       slot-scope="{ enabled, reload, message, buttonText }"
-      class="my-sw-update-popup">
-      {{ message }}<br>
-      <button @click="reload">{{ buttonText }}</button>
+      class="sw-update-popup">
+      <!-- TODO: 做一个自定义的 Notification -->
+      <span>{{ message }}</span>
+      <button  @click="reload">{{ buttonText }}</button>
     </div>
   </SWUpdatePopup>
 </template>
