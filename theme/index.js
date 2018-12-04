@@ -6,6 +6,13 @@ module.exports = {
     },
     '@vuepress/plugin-blog': {
       postsDir: 'posts'
+    },
+    '@vuepress/last-updated': {
+      transformer: (timestamp, lang) => {
+        const dayjs = require('dayjs');
+        // 变量注入到 $page.lastUpdated
+        return dayjs(timestamp).format('YYYY-MM-DD HH:mm:ss');
+      }
     }
-  }
+  },
 };
