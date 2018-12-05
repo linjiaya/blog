@@ -1,12 +1,14 @@
 <template>
   <SWUpdatePopup>
-    <div
-      slot-scope="{ enabled, reload, message, buttonText }"
-      class="sw-update-popup">
+    <div slot-scope="{ reload, enabled }" >
       <!-- TODO: 做一个自定义的 Notification -->
-      <span>{{ message }}</span>
-      <button  @click="reload">{{ buttonText }}</button>
-    </div>
+      <div v-if="enabled" class="myPopup">
+        <div class="msgSpan">{{ message }}</div>
+        <div class="msgBtnDiv">
+          <span class="msgBtn" @click="reload">{{ buttonText }}</span>
+        </div>
+      </div>
+    </div>>
   </SWUpdatePopup>
 </template>
 
@@ -15,23 +17,86 @@ import SWUpdatePopup from '@vuepress/plugin-pwa/lib/SWUpdatePopup.vue';
 
 export default {
 	name: 'MySWUpdatePopup',
-	components: {SWUpdatePopup}
+	components: {SWUpdatePopup},
+	data() {
+		return {
+			message: '有新内容',
+			buttonText: '更新'
+		};
+	}
 };
 </script>
 
-<style>
-.my-sw-update-popup {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  padding: 10px;
-  border: 5px solid #3eaf7c;
-  background-color: #fff;
-  font-size: 20px;
-  text-align: right;
+<style lang="scss">
+@keyframes breathe {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
-.my-sw-update-popup button {
-  border: 1px solid #fefefe;
+@keyframes bounce {
+  40% {
+    transform: scale(1.4);
+  }
+
+  60% {
+    transform: scale(0.8);
+  }
+
+  80% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.myPopup {
+  position: fixed;
+  z-index: 2;
+  right: 20px;
+  bottom: 20px;
+  width: 200px;
+  height: 80px;
+  padding: 10px;
+  animation: breathe 2s ease-in-out infinite alternate;
+  background-image: linear-gradient(to top, #434343 0%, black 100%);
+  border-radius: 5px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  text-align: center;
+
+  &:hover {
+    animation: none;
+  }
+
+  .msgSpan {
+    color: ghostwhite;
+
+    &:hover {
+      animation: bounce 0.4s linear;
+    }
+  }
+
+  .msgBtnDiv {
+    margin-top: 10px;
+
+    &:hover {
+      animation: bounce 0.4s linear;
+    }
+
+    .msgBtn {
+      padding: 5px 10px;
+      background-color: ghostwhite;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+  }
 }
 </style>
