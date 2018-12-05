@@ -1,12 +1,14 @@
 <template>
   <SWUpdatePopup>
-    <div slot-scope="{ reload }" class="myPopup">
+    <div slot-scope="{ reload, enabled }" >
       <!-- TODO: 做一个自定义的 Notification -->
-      <div class="msgSpan">{{ message }}</div>
-      <div class="msgBtnDiv">
-        <span class="msgBtn" @click="reload">{{ buttonText }}</span>
+      <div v-if="enabled" class="myPopup">
+        <div class="msgSpan">{{ message }}</div>
+        <div class="msgBtnDiv">
+          <span class="msgBtn" @click="reload">{{ buttonText }}</span>
+        </div>
       </div>
-    </div>
+    </div>>
   </SWUpdatePopup>
 </template>
 
