@@ -77,8 +77,7 @@ category 从维度来讲是主分类，tags 进行辅助分类
 VuePress requires Node.js >= 8.
 :::
 
-#### frontMatter generator
+#### feature
 
-- 自动生成 author, title, tags, categories
-
-<img src="./logo.png">
+- [ ] frontMatter generator. Auto generate author, title, tags, categories.
+- [ ] live Demo. Sometimes An article may use the code to preview.
