@@ -26,8 +26,8 @@
     "@vue/cli-plugin-babel": "^3.1.1",
     "@vue/cli-plugin-eslint": "^3.1.5",
     "@vue/cli-service": "^3.1.4",
-    "@vuepress/plugin-blog": "^1.0.0-alpha.24",
-    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.24",
+    "@vuepress/plugin-blog": "^1.0.0-alpha.27",
+    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.27",
     "@vuepress/plugin-pwa": "^1.0.0-alpha.27",
     "babel-eslint": "^10.0.1",
     "chalk": "^2.3.2",
@@ -48,7 +48,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.5.17",
-    "vuepress": "^1.0.0-alpha.25"
+    "vuepress": "^1.0.0-alpha.27"
   },
   "gitHooks": {
     "pre-commit": "lint-staged",
