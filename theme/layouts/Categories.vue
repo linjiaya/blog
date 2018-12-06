@@ -1,14 +1,12 @@
 <template>
-  <div class="theme-container">
-    <div class="page custom-page-post">
-      <Content class="post-content" />
-    </div>
+   <div class="categories-list">
+    categories-list
   </div>
 </template>
 
 <script>
 export default {
-	name: 'Post'
+	name: 'Categories'
 };
 </script>
 
