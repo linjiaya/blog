@@ -1,9 +1,9 @@
 <template>
   <Layout>
-  <div class="post-tag">
+  <div class="post-category">
     <ul>
-      <li class="tag-item" v-for="(post, index) in posts" :key="index">
-        <router-link class="tag-item-a" :to="post.path" >
+      <li class="category-item" v-for="(post, index) in posts" :key="index">
+        <router-link class="category-item-a" :to="post.path" >
           <span>title: {{post.title}}</span>
           <!-- TODO: use the description of frontmatter, but if not specialfied, the default value should be set to the first two lines of the article -->
           <span>description: {{post.frontmatter.description}}</span>
@@ -28,10 +28,10 @@
 <script>
 import get from 'lodash-es/get';
 export default {
-	name: 'Tag',
+	name: 'Category',
 	computed: {
 		posts() {
-			return get(this.$tag, 'posts', []);
+			return get(this.$category, 'posts', []);
 		}
 	}
 };
@@ -44,7 +44,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-.tag-item {
+.category-item {
   width: 20rem;
   margin: 10px;
   // height: 10rem;
@@ -52,7 +52,7 @@ export default {
   box-shadow: 0 0 4px rgba(#000, 0.4);
 }
 
-.tag-item-a {
+.category-item-a {
   display: flex;
   width: 100%;
   height: 100%;

@@ -4,25 +4,13 @@ actionText: Get Started →
 footer: ''
 ---
 
-<header class="header">
-  <!-- {{JSON.stringify($tags, null, 4)}} -->
-</header>
-
-<div class="tag-lists">
-  <h1>这里可以打印出文章所有使用的tag 和 此分类对应的位置，同时还可以知道该分类下具有多少文章</h1>
-  <li v-for="(value, key) of $tags._metaMap" :key="key">
-  <a style="color:cyan;" :href="value.path">{{key}}: {{value.path}}<OutboundLink /> </a>
-    => <a style="color:red;" v-for="(post, index) in value.posts" :key="index" :href="post.path">{{post.title}}<OutboundLink /></a>
-  </li>
-</div>
-
 # 初步设想设计
 
 [Wow Desgin](https://ktquez.com/en/)
 
 [Theme Search](https://github.com/search?q=vuepress+theme)
 
-### layout 布局
+### layout 布局 3
 
 `theme` 文件夹下的组件是自定义的 theme 主题。 当 `markdown` 中的 `frontMatter` 中定义 layout 的时候。例如
 
@@ -63,22 +51,24 @@ Home 主页需要重新编排。做一个比较具有特色的风格
 
 #### Tags 页面
 
-/tags/
+/tag/
 
 这个是该标签对应的分类页面.
 
-> 可以简单的有一个相关的该分类下的文章 list.
-
 #### Categories 页面
+
+/category/
 
 category 从维度来讲是主分类，tags 进行辅助分类
 
-::: warning COMPATIBILITY NOTE
-VuePress requires Node.js >= 8.
-:::
+#### feature
 
-#### frontMatter generator
+- [ ] frontMatter generator. Auto generate author, title, tags, categories.
+- [ ] live Demo. Sometimes An article may use the code to preview.
 
-- 自动生成 author, title, tags, categories
+#### UI improvement
 
-<img src="./logo.png">
+- [ ] The categories list such as the magic sidebar in Mac.
+- [ ] 阅读书籍的翻页效果
+- [ ] scrollbar improvement
+- [ ] https://codepen.io/joshuaward/pen/aQXLPa
