@@ -4,18 +4,18 @@
       <nav class="breadcrumbs">
         <ul class="rec-list is-category" v-if="categoryList.length">
           <li class="item" v-for="(category, index) in categoryList" :key="index">
-            <a :href="category.path">
+            <router-link :to="category.path">
               #{{category.key | upper}}
-            </a>
+            </router-link>
           </li>
         </ul>
-        <ul class="rec-list is-tag" v-if="tagList.length">
+        <!-- <ul class="rec-list is-tag" v-if="tagList.length">
           <li class="item" v-for="(tag, index) in tagList" :key="index">
             <a :href="tag.path">
               #{{tag.key | upper}}
             </a>
           </li>
-        </ul>
+        </ul> -->
       </nav>
       <Content class="post-content" />
     </div>
@@ -83,6 +83,7 @@ export default {
 .rec-list {
   display: flex;
   align-items: center;
+  padding: 6px 0;
   font-size: 0.8rem;
 
   .item + .item {

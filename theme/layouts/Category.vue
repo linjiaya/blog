@@ -1,27 +1,27 @@
 <template>
   <Layout>
-  <div class="post-category">
-    <ul>
-      <li class="category-item" v-for="(post, index) in posts" :key="index">
-        <router-link class="category-item-a" :to="post.path" >
-          <span>title: {{post.title}}</span>
-          <!-- TODO: use the description of frontmatter, but if not specialfied, the default value should be set to the first two lines of the article -->
-          <span>description: {{post.frontmatter.description}}</span>
-          <!-- TODO: use the `localstorage` to cache the key -->
-          <span>是否阅读： 已读</span>
-          <!-- TODO: 通过 ga(Google Analysis)获取每个界面的UV，通过提供的API获取相应的文章阅读数目 -->
-          <span>pv: 1099</span>
+    <div class="post-category">
+      <ul class="grid-category">
+        <li class="category-item" v-for="(post, index) in posts" :key="index">
+          <router-link class="category-item-a" :to="post.path" >
+            <h2>{{post.frontmatter.title}}</h2>
+            <!-- TODO: use the description of frontmatter, but if not specialfied, the default value should be set to the first two lines of the article -->
+            <h3>{{post.frontmatter.description || 'abcded '.repeat(15)}}</h3>
+            <!-- TODO: use the `localstorage` to cache the key -->
+            <!-- <span>是否阅读： 已读</span> -->
+            <!-- TODO: 通过 ga(Google Analysis)获取每个界面的UV，通过提供的API获取相应的文章阅读数目 -->
+            <!-- <span>pv: 1099</span> -->
 
-        </router-link>
-      </li>
-    </ul>
-    <ul>
-      <li v-for="(post, index) in posts" :key="index">
-        <!-- 通过给content设置page-key,可以渲染出这个post的内容 -->
-        <!-- <Content class="post-content" :page-key="post.key"></Content> -->
-      </li>
-    </ul>
-  </div>
+          </router-link>
+        </li>
+      </ul>
+      <ul>
+        <li v-for="(post, index) in posts" :key="index">
+          <!-- 通过给content设置page-key,可以渲染出这个post的内容 -->
+          <!-- <Content class="post-content" :page-key="post.key"></Content> -->
+        </li>
+      </ul>
+    </div>
   </Layout>
 </template>
 
@@ -44,20 +44,45 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+.post-category {
+  max-width: 74rem;
+  margin: 0 auto;
+
+  .grid-category {
+    display: grid;
+    padding: 30px 0;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    color: #4aae9b;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  h3 {
+    color: #93a791;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-align: center;
+    word-break: normal;
+  }
+}
+
 .category-item {
-  width: 20rem;
-  margin: 10px;
-  // height: 10rem;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 4px rgba(#000, 0.4);
+  margin: 1rem 0.7rem;
 }
 
 .category-item-a {
   display: flex;
-  width: 100%;
-  height: 100%;
-  flex-flow: column nowrap;
+  min-height: 200px;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  padding: 1.25rem;
+  border-radius: 3px;
+  box-shadow: 1px 1px 15px rgba(67, 38, 100, 0.15);
 }
 </style>

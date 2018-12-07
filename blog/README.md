@@ -65,6 +65,7 @@ category 从维度来讲是主分类，tags 进行辅助分类
 
 - [ ] frontMatter generator. Auto generate author, title, tags, categories.
 - [ ] live Demo. Sometimes An article may use the code to preview.
+- [ ] pageSize & readTime.
 
 #### UI improvement
 
