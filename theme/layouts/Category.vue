@@ -1,4 +1,5 @@
 <template>
+  <Layout>
   <div class="post-category">
     <ul>
       <li class="category-item" v-for="(post, index) in posts" :key="index">
@@ -21,6 +22,7 @@
       </li>
     </ul>
   </div>
+  </Layout>
 </template>
 
 <script>

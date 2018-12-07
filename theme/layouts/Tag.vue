@@ -1,4 +1,5 @@
 <template>
+  <Layout>
   <div class="post-tag">
     <ul>
       <li class="tag-item" v-for="(post, index) in posts" :key="index">
@@ -21,6 +22,7 @@
       </li>
     </ul>
   </div>
+  </Layout>
 </template>
 
 <script>
