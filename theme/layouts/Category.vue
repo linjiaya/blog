@@ -1,6 +1,10 @@
 <template>
   <Layout>
     <div class="post-category">
+      <h1>Posts About {{categoryName}}</h1>
+      <p class="mr-30">
+        <input class="filter bottom-subscribe" type="text" placeholder="filter..." v-model.lazy="search">
+      </p>
       <ul class="grid-category">
         <li class="category-item" v-for="(post, index) in posts" :key="index">
           <router-link class="category-item-a" :to="post.path" >
@@ -29,9 +33,22 @@
 import get from 'lodash-es/get';
 export default {
 	name: 'Category',
+	data() {
+		return {
+			search: ''
+		};
+	},
 	computed: {
 		posts() {
 			return get(this.$category, 'posts', []);
+		},
+		categoryName() {
+			return this.$title.split('|')[0].trim();
+		}
+	},
+	watch: {
+		search(val) {
+			// 调用查询能力
 		}
 	}
 };
@@ -47,6 +64,16 @@ export default {
 .post-category {
   max-width: 74rem;
   margin: 0 auto;
+
+  h1 {
+    margin-top: 0.4em;
+    margin-bottom: 0.2em;
+    color: var(--green1);
+    font-size: 3.7em;
+    font-style: italic;
+    font-weight: 200;
+    text-align: center;
+  }
 
   .grid-category {
     display: grid;
@@ -73,6 +100,12 @@ export default {
 
 .category-item {
   margin: 1rem 0.7rem;
+  background: linear-gradient(135deg, #41b883 10px, rgba(0, 0, 0, 0.01) 0);
+  transition: all 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
 }
 
 .category-item-a {
@@ -84,5 +117,36 @@ export default {
   padding: 1.25rem;
   border-radius: 3px;
   box-shadow: 1px 1px 15px rgba(67, 38, 100, 0.15);
+}
+
+input.filter {
+  width: 500px;
+  max-width: 100%;
+  margin-bottom: 2.2rem;
+}
+
+input.bottom-subscribe {
+  display: block;
+  height: 2.5em;
+  margin: 0 auto;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #6db65b;
+  background: #fcfcfc;
+  border-radius: 8px;
+  color: #555;
+  font-size: 17px;
+  text-align: center;
+  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
+}
+
+input:focus {
+  border-color: var(--subtle);
+  box-shadow: 0 0 5px var(--subtle);
+  outline: 0;
+}
+
+.mr-30 {
+  margin-top: 30px;
 }
 </style>

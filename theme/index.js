@@ -4,7 +4,7 @@ module.exports = {
 	extend: '@vuepress/theme-default',
 	plugins: {
 		'@vuepress/plugin-medium-zoom': {
-			selector: 'img'
+			selector: '.post-content img'
 		},
 		'@vuepress/plugin-blog': {
 			postsDir: 'posts'

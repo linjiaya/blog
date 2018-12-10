@@ -4,6 +4,7 @@
     :class="pageClasses"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
+    ref="container"
   >
 		<!-- 头部 -->
     <AppHeader
@@ -78,4 +79,21 @@ export default {
 <style lang="stylus" src="@parent-theme/styles/theme.styl"></style>
 <style lang="scss">
 @import '../styles/theme.scss';
+@import url('https://fonts.googleapis.com/css?family=Cookie');
+
+@font-face {
+  font-family: 'Oswald-Regular';
+  src: url('/Oswald-Regular.ttf');
+}
+
+.font-cookie {
+  font-family: 'Cookie', cursive;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.custom-font {
+  font-family: 'Oswald-Regular', cursive;
+  font-weight: 200;
+}
 </style>

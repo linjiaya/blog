@@ -30,7 +30,7 @@ import {mapState, mapActions} from 'vuex';
 import eProfile from '@/components/e-profile';
 import eArticle from '@/components/e-article';
 import ePagination from '@/components/e-pagination';
-import debug from 'debug-miniapp';
+import debug from 'debug';
 debug.enable('Home.vue:');
 // Const log = debug('Home.vue:')
 
