@@ -9,8 +9,7 @@
         <li class="category-item" v-for="(post, index) in posts" :key="index">
           <router-link class="category-item-a" :to="post.path" >
             <h2>{{post.frontmatter.title}}</h2>
-            <!-- TODO: use the description of frontmatter, but if not specialfied, the default value should be set to the first two lines of the article -->
-            <h3>{{post.frontmatter.description || 'abcded '.repeat(15)}}</h3>
+            <h3>{{post.frontmatter.description}}</h3>
             <!-- TODO: use the `localstorage` to cache the key -->
             <!-- <span>是否阅读： 已读</span> -->
             <!-- TODO: 通过 ga(Google Analysis)获取每个界面的UV，通过提供的API获取相应的文章阅读数目 -->
@@ -47,7 +46,7 @@ export default {
 		}
 	},
 	watch: {
-		search(val) {
+		search() {
 			// 调用查询能力
 		}
 	}
@@ -92,7 +91,7 @@ export default {
   h3 {
     color: #93a791;
     font-size: 1rem;
-    line-height: 1.2;
+    line-height: 1.5;
     text-align: center;
     word-break: normal;
   }

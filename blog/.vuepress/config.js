@@ -1,5 +1,8 @@
 module.exports = {
-	contentLoading: true,
+  contentLoading: true,
 	dest: 'dist',
-	theme: 'theme/index.js'
+  theme: 'theme/index.js',
+  plugins: {
+    'plugin/index.js' : true
+  }
 };
