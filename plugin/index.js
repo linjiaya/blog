@@ -6,7 +6,7 @@ module.exports = (options, ctx) => {
       frontmatter
     }) {
       const text = _strippedContent ? _strippedContent : ''
-      frontmatter.description = frontmatter.description ? frontmatter.description : text.slice(0, 60) + '...'
+      frontmatter.description = frontmatter.description ? frontmatter.description : text.slice(0, 60) + ' ...'
     }
   }
 }
