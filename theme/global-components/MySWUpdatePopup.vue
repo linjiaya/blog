@@ -13,18 +13,18 @@
 </template>
 
 <script>
-import SWUpdatePopup from '@vuepress/plugin-pwa/lib/SWUpdatePopup.vue';
+import SWUpdatePopup from '@vuepress/plugin-pwa/lib/SWUpdatePopup.vue'
 
 export default {
-	name: 'MySWUpdatePopup',
-	components: {SWUpdatePopup},
-	data() {
-		return {
-			message: '有新内容',
-			buttonText: '更新'
-		};
-	}
-};
+  name: 'MySWUpdatePopup',
+  components: {SWUpdatePopup},
+  data() {
+    return {
+      message: '有新内容',
+      buttonText: '更新'
+    }
+  }
+}
 </script>
 
 <style lang="scss">

@@ -5,8 +5,8 @@ module.exports = (options, ctx) => {
       _strippedContent,
       frontmatter
     }) {
-      text = _strippedContent ? _strippedContent : '';
-      frontmatter.description = frontmatter.description ? frontmatter.description : text.slice(0, 60) + '...';
+      const text = _strippedContent ? _strippedContent : ''
+      frontmatter.description = frontmatter.description ? frontmatter.description : text.slice(0, 60) + '...'
     }
   }
 }

@@ -20,12 +20,12 @@
 </template>
 
 <script>
-import get from 'lodash-es/get';
+import get from 'lodash-es/get'
 export default {
-	name: 'AppHeader',
-	computed: {
-	}
-};
+  name: 'AppHeader',
+  computed: {
+  }
+}
 </script>
 
 <style lang="scss">

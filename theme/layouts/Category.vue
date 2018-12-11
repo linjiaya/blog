@@ -29,28 +29,28 @@
 </template>
 
 <script>
-import get from 'lodash-es/get';
+import get from 'lodash-es/get'
 export default {
-	name: 'Category',
-	data() {
-		return {
-			search: ''
-		};
-	},
-	computed: {
-		posts() {
-			return get(this.$category, 'posts', []);
-		},
-		categoryName() {
-			return this.$title.split('|')[0].trim();
-		}
-	},
-	watch: {
-		search() {
-			// 调用查询能力
-		}
-	}
-};
+  name: 'Category',
+  data() {
+    return {
+      search: ''
+    }
+  },
+  computed: {
+    posts() {
+      return get(this.$category, 'posts', [])
+    },
+    categoryName() {
+      return this.$title.split('|')[0].trim()
+    }
+  },
+  watch: {
+    search() {
+      // 调用查询能力
+    }
+  }
+}
 </script>
 
 <style lang="stylus" src="@parent-theme/styles/theme.styl"></style>

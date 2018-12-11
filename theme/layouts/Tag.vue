@@ -26,15 +26,15 @@
 </template>
 
 <script>
-import get from 'lodash-es/get';
+import get from 'lodash-es/get'
 export default {
-	name: 'Tag',
-	computed: {
-		posts() {
-			return get(this.$tag, 'posts', []);
-		}
-	}
-};
+  name: 'Tag',
+  computed: {
+    posts() {
+      return get(this.$tag, 'posts', [])
+    }
+  }
+}
 </script>
 
 <style lang="stylus" src="@parent-theme/styles/theme.styl"></style>

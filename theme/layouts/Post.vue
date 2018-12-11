@@ -23,43 +23,43 @@
 </template>
 
 <script>
-import get from 'lodash-es/get';
+import get from 'lodash-es/get'
 export default {
-	name: 'Post',
-	filters: {
-		upper(value) {
-			return value.toUpperCase().replace('.', '');
-		}
-	},
-	computed: {
-		categoryList() {
-			return Object.entries(this.$categories._metaMap).reduce((result, item) => {
-				const key = item[0];
-				let value = get(item[1], 'posts');
-				if (value.find(post => post.path === this.$route.path)) {
-					result.push({
-						key,
-						path: get(item[1], 'path')
-					});
-				}
-				return result;
-			}, []);
-		},
-		tagList() {
-			return Object.entries(this.$tags._metaMap).reduce((result, item) => {
-				const key = item[0];
-				let value = get(item[1], 'posts');
-				if (value.find(post => post.path === this.$route.path)) {
-					result.push({
-						key,
-						path: get(item[1], 'path')
-					});
-				}
-				return result;
-			}, []);
-		}
-	}
-};
+  name: 'Post',
+  filters: {
+    upper(value) {
+      return value.toUpperCase().replace('.', '')
+    }
+  },
+  computed: {
+    categoryList() {
+      return Object.entries(this.$categories._metaMap).reduce((result, item) => {
+        const key = item[0]
+        let value = get(item[1], 'posts')
+        if (value.find(post => post.path === this.$route.path)) {
+          result.push({
+            key,
+            path: get(item[1], 'path')
+          })
+        }
+        return result
+      }, [])
+    },
+    tagList() {
+      return Object.entries(this.$tags._metaMap).reduce((result, item) => {
+        const key = item[0]
+        let value = get(item[1], 'posts')
+        if (value.find(post => post.path === this.$route.path)) {
+          result.push({
+            key,
+            path: get(item[1], 'path')
+          })
+        }
+        return result
+      }, [])
+    }
+  }
+}
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css">

@@ -22,57 +22,57 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import nprogress from 'nprogress';
+import Vue from 'vue'
+import nprogress from 'nprogress'
 
 export default {
-	computed: {
-		pageClasses() {
-			const userPageClass = this.$page.frontmatter.pageClass;
-			return [
-				userPageClass
-			];
-		}
-	},
+  computed: {
+    pageClasses() {
+      const userPageClass = this.$page.frontmatter.pageClass
+      return [
+        userPageClass
+      ]
+    }
+  },
 
-	mounted() {
-		// Configure progress bar
-		nprogress.configure({showSpinner: false});
+  mounted() {
+    // Configure progress bar
+    nprogress.configure({showSpinner: false})
 
-		this.$router.beforeEach((to, from, next) => {
-			if (to.path !== from.path && !Vue.component(to.name)) {
-				nprogress.start();
-			}
-			next();
-		});
+    this.$router.beforeEach((to, from, next) => {
+      if (to.path !== from.path && !Vue.component(to.name)) {
+        nprogress.start()
+      }
+      next()
+    })
 
-		this.$router.afterEach(() => {
-			nprogress.done();
-		});
-	},
+    this.$router.afterEach(() => {
+      nprogress.done()
+    })
+  },
 
-	methods: {
-		// Side swipe
-		onTouchStart(e) {
-			this.touchStart = {
-				x: e.changedTouches[0].clientX,
-				y: e.changedTouches[0].clientY
-			};
-		},
+  methods: {
+    // Side swipe
+    onTouchStart(e) {
+      this.touchStart = {
+        x: e.changedTouches[0].clientX,
+        y: e.changedTouches[0].clientY
+      }
+    },
 
-		onTouchEnd(e) {
-			const dx = e.changedTouches[0].clientX - this.touchStart.x;
-			const dy = e.changedTouches[0].clientY - this.touchStart.y;
-			if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-				if (dx > 0 && this.touchStart.x <= 80) {
-					this.toggleSidebar(true);
-				} else {
-					this.toggleSidebar(false);
-				}
-			}
-		}
-	}
-};
+    onTouchEnd(e) {
+      const dx = e.changedTouches[0].clientX - this.touchStart.x
+      const dy = e.changedTouches[0].clientY - this.touchStart.y
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        if (dx > 0 && this.touchStart.x <= 80) {
+          this.toggleSidebar(true)
+        } else {
+          this.toggleSidebar(false)
+        }
+      }
+    }
+  }
+}
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
