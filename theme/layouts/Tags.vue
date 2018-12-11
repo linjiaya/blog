@@ -6,8 +6,8 @@
 
 <script>
 export default {
-	name: 'Tags'
-};
+  name: 'Tags'
+}
 </script>
 <style lang="stylus" src="@parent-theme/styles/theme.styl"></style>
 <style lang="scss">

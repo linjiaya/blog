@@ -1,3 +1,6 @@
 # Maybe the node-ignore will ignore the file which startswith '.' by default.
 # TODO: 验证是否 真的默认忽略以 .为起始的文件夹
 !.vuepress
+node_modules/
+dist/
+src/

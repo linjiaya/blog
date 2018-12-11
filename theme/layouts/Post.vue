@@ -4,18 +4,18 @@
       <nav class="breadcrumbs">
         <ul class="rec-list is-category" v-if="categoryList.length">
           <li class="item" v-for="(category, index) in categoryList" :key="index">
-            <a :href="category.path">
+            <router-link :to="category.path">
               #{{category.key | upper}}
-            </a>
+            </router-link>
           </li>
         </ul>
-        <ul class="rec-list is-tag" v-if="tagList.length">
+        <!-- <ul class="rec-list is-tag" v-if="tagList.length">
           <li class="item" v-for="(tag, index) in tagList" :key="index">
             <a :href="tag.path">
               #{{tag.key | upper}}
             </a>
           </li>
-        </ul>
+        </ul> -->
       </nav>
       <Content class="post-content" />
     </div>
@@ -23,43 +23,43 @@
 </template>
 
 <script>
-import get from 'lodash-es/get';
+import get from 'lodash-es/get'
 export default {
-	name: 'Post',
-	filters: {
-		upper(value) {
-			return value.toUpperCase().replace('.', '');
-		}
-	},
-	computed: {
-		categoryList() {
-			return Object.entries(this.$categories._metaMap).reduce((result, item) => {
-				const key = item[0];
-				let value = get(item[1], 'posts');
-				if (value.find(post => post.path === this.$route.path)) {
-					result.push({
-						key,
-						path: get(item[1], 'path')
-					});
-				}
-				return result;
-			}, []);
-		},
-		tagList() {
-			return Object.entries(this.$tags._metaMap).reduce((result, item) => {
-				const key = item[0];
-				let value = get(item[1], 'posts');
-				if (value.find(post => post.path === this.$route.path)) {
-					result.push({
-						key,
-						path: get(item[1], 'path')
-					});
-				}
-				return result;
-			}, []);
-		}
-	}
-};
+  name: 'Post',
+  filters: {
+    upper(value) {
+      return value.toUpperCase().replace('.', '')
+    }
+  },
+  computed: {
+    categoryList() {
+      return Object.entries(this.$categories._metaMap).reduce((result, item) => {
+        const key = item[0]
+        let value = get(item[1], 'posts')
+        if (value.find(post => post.path === this.$route.path)) {
+          result.push({
+            key,
+            path: get(item[1], 'path')
+          })
+        }
+        return result
+      }, [])
+    },
+    tagList() {
+      return Object.entries(this.$tags._metaMap).reduce((result, item) => {
+        const key = item[0]
+        let value = get(item[1], 'posts')
+        if (value.find(post => post.path === this.$route.path)) {
+          result.push({
+            key,
+            path: get(item[1], 'path')
+          })
+        }
+        return result
+      }, [])
+    }
+  }
+}
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css">
@@ -83,6 +83,7 @@ export default {
 .rec-list {
   display: flex;
   align-items: center;
+  padding: 6px 0;
   font-size: 0.8rem;
 
   .item + .item {

@@ -40,31 +40,11 @@ Home 主页需要重新编排。做一个比较具有特色的风格
 - 代码高亮 (css 配置)， 代码抽取已经经过 markdown-it 处理过了 => 选一个 Ok 的 风格
 - 其他 markdown-it-xxx plugin 的能力
 
-#### Tag 页面
-
-/tag/:slug
-
-风格如下
-<img :src="$withBase('/tag.png')" alt="foo">
-
-> Extends Post.vue
-
-#### Tags 页面
-
-/tag/
-
-这个是该标签对应的分类页面.
-
-#### Categories 页面
-
-/category/
-
-category 从维度来讲是主分类，tags 进行辅助分类
-
 #### feature
 
 - [ ] frontMatter generator. Auto generate author, title, tags, categories.
 - [ ] live Demo. Sometimes An article may use the code to preview.
+- [ ] pageSize & readTime.
 
 #### UI improvement
 

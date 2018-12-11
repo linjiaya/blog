@@ -1,8 +1,8 @@
 <template>
   <header class="app-header">
-    <div class="home-logo">
-      <router-link to="/" class="category-link">
-        Logo
+    <div class="home-logo" v-if="!$frontmatter.home">
+      <router-link to="/" class="lunariours-logo">
+        <img src="../../blog/images/logo.jpeg" alt="">
       </router-link>
     </div>
     <ul class="category-ul" v-if="Object.keys($categories._metaMap).length">
@@ -20,15 +20,17 @@
 </template>
 
 <script>
-import get from 'lodash-es/get';
+import get from 'lodash-es/get'
 export default {
-	name: 'AppHeader',
-	computed: {
-	}
-};
+  name: 'AppHeader',
+  computed: {
+  }
+}
 </script>
 
 <style lang="scss">
+$mrl: 140px;
+
 .app-header {
   display: flex;
   background: linear-gradient(to right, rgba(107, 183, 86, 0.95), #008f68);
@@ -40,12 +42,11 @@ export default {
   }
 
   .category-li {
-    height: 3.7rem;
+    line-height: 3.7rem;
   }
 
   .category-link {
     display: flex;
-    height: 100%;
     align-items: center;
     padding: 0 1.25rem;
     color: #fff;
@@ -59,6 +60,32 @@ export default {
     &.router-link-exact-active {
       background: rgba(0, 0, 0, 0.1);
     }
+  }
+}
+
+.home-logo {
+  position: relative;
+  width: $mrl;
+}
+
+.lunariours-logo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  overflow: hidden;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transform: translate(-50%, 50%);
+  transition: transform 0.1s cubic-bezier(0, 1.8, 1, 1.8);
+
+  &:hover {
+    transform: translate(-50%, 50%) rotate(-5deg) scale(1.15);
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
   }
 }
 </style>

@@ -6,8 +6,8 @@
 
 <script>
 export default {
-	name: 'Categories'
-};
+  name: 'Categories'
+}
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css">

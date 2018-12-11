@@ -7,7 +7,7 @@
     "lint": "vue-cli-service lint",
     "dev": "vuepress dev blog",
     "dev:temp": "vuepress dev blog --temp .temp",
-    "lint:js": "eslint --ext .js,.vue {theme,blog}",
+    "lint:js": "eslint --ext .js,.vue .",
     "lint:css": "stylelint '**/*.{vue,scss}'",
     "lint:md": "prettier --write '**/*.md'",
     "serve": "vue-cli-service serve"
