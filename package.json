@@ -5,7 +5,7 @@
   "scripts": {
     "build": "vuepress build blog",
     "lint": "vue-cli-service lint",
-    "dev": "vuepress dev blog",
+    "dev": "vuepress dev blog -d --temp .temp",
     "dev:temp": "vuepress dev blog --temp .temp",
     "lint:js": "eslint --ext .js,.vue .",
     "lint:css": "stylelint '**/*.{vue,scss}'",
