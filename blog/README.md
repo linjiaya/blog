@@ -27,6 +27,7 @@ home: true
 - [ ] pageSize & readTime of per Post.
 - [ ] frontMatter generator. Auto generate author, title, tags, categories.
 - [x] content loader for loading iframe resource. [see detail](/#iframe-loader)
+- [ ] live preview. the `vue component` can run in the Post with editing the code in real time
 
 ### UI improvement
 
@@ -45,4 +46,4 @@ home: true
 
 <<< @/theme/global-components/IframeLoader.vue
 
-<iframe-loader style="height:300px;" src="//codepen.io/EliazTray/embed/preview/PyeBza/?height=265&theme-id=dark&default-tab=css,result" />
+<iframe-loader style="height:500px;" src="//codepen.io/EliazTray/embed/preview/PyeBza/?height=265&theme-id=dark&default-tab=css,result" />
