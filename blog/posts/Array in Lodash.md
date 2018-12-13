@@ -2,6 +2,7 @@
 title: the Class Array in lodash
 date: 2017-11-22 18:01:28
 category: Javascript
+description: the Class Array in lodash, custom description
 tags:
   - Lodash
   - Array

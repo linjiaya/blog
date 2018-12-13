@@ -1,12 +1,16 @@
 module.exports = (options, ctx) => {
   return {
     // Add description
-    extendPageData({
-      _strippedContent,
-      frontmatter
-    }) {
-      const text = _strippedContent ? _strippedContent : ''
-      frontmatter.description = frontmatter.description ? frontmatter.description : text.slice(0, 60) + ' ...'
+    extendPageData(page) {
+      const {
+        _strippedContent,
+        frontmatter
+      } = page
+      if (!frontmatter.description) {
+        if (_strippedContent) {
+          frontmatter.description = _strippedContent.slice(0, 60) + ' ...'
+        }
+      }
     }
   }
 }
