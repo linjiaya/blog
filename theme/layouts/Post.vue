@@ -2,6 +2,12 @@
   <Layout>
     <div class="custom-page-post">
       <nav class="breadcrumbs">
+        <div class="page-size">
+          <span>文章字数约:</span>
+          <span>{{$frontmatter.pageSize}}</span>
+          <span class="page-pre">预计阅读:</span>
+          <span>{{$frontmatter.readTime}}</span>
+        </div>
         <ul class="rec-list is-category" v-if="categoryList.length">
           <li class="item" v-for="(category, index) in categoryList" :key="index">
             <router-link :to="category.path">
@@ -98,6 +104,15 @@ export default {
     &:hover {
       opacity: 0.7;
     }
+  }
+}
+
+.page-size {
+  padding: 6px 0;
+  font-size: 0.8rem;
+
+  .page-pre {
+    margin-left: 10px;
   }
 }
 </style>
