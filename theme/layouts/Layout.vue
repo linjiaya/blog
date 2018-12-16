@@ -1,24 +1,25 @@
 <template>
+  <!-- 所有界面都应该基于layout -->
   <div class="theme-main">
-    <div class="current-read" :style="{width:currentRead}"></div>
+    <div class="current-read" :style="{transform: `translate3d(${offsetProgress}%, 0, 0)`}"></div>
     <div class="scroll-main">
-    <div
-      class="theme-container"
-      :class="pageClasses"
-      @touchstart="onTouchStart"
-      @touchend="onTouchEnd"
-      ref="container"
-    >
-        <!-- 头部 -->
-        <AppHeader v-if="true"/>
+      <div
+        class="theme-container"
+        :class="pageClasses"
+        @touchstart="onTouchStart"
+        @touchend="onTouchEnd"
+        ref="container"
+      >
+          <!-- 头部 -->
+          <AppHeader v-if="true"/>
 
-        <!-- 正文 -->
-        <slot>
-          <Home v-if="$frontmatter.home"></Home>
-          <Content v-else-if="$page.key" :page-key="$page.key"></Content>
-        </slot>
-        <!-- back-to-top -->
-    </div>
+          <!-- 正文 -->
+          <slot>
+            <Home v-if="$frontmatter.home"></Home>
+            <Content v-else-if="$page.key" :page-key="$page.key"></Content>
+          </slot>
+          <!-- back-to-top -->
+      </div>
     </div>
   </div>
 </template>
@@ -38,39 +39,11 @@ export default {
   },
   data() {
     return {
-      currentRead: 0
+      offsetProgress: -100
     }
   },
 
   mounted() {
-    this.$nextTick(() => {
-      const options = {
-        alwaysShowTracks: false, // 保持滚动条轨迹可见。
-        continuousScrolling: false, // 设置为true允许外部滚动条在当前滚动条到达边缘时继续滚动。
-        renderByPixels: true, // 以整数像素值渲染每一帧，设置true为提高滚动性能
-        damping: 0.2, // 阻尼系数，浮动值之间(0, 1)。值越低，滚动越平滑（绘制帧越多）。
-        thumbMinSize: 20, // 滚动条拇指的最小尺寸。
-        plugins: {
-          overscroll: {
-            effect: 'glow',
-            maxOverscroll: 150,
-            damping: 0.2,
-            glowColor: '#222a2d'
-          }
-        }
-      }
-      Scrollbar.use(OverscrollPlugin)
-      let scroll = Scrollbar.init(
-        document.getElementsByClassName('scroll-main')[0],
-        options
-      )
-      let self = this
-      function listener(status) {
-        self.currentRead = parseInt((status.offset.y * 100) / status.limit.y, 10) + '%'
-      }
-      scroll.addListener(listener)
-      // A.removeListener(listener)
-    })
     // Configure progress bar
     nprogress.configure({showSpinner: false})
 
@@ -84,6 +57,12 @@ export default {
     this.$router.afterEach(() => {
       nprogress.done()
     })
+
+    this.registerSmoothScroll()
+  },
+
+  beforeDestroy() {
+    this.removeSmoothScroll()
   },
 
   methods: {
@@ -105,6 +84,32 @@ export default {
           this.toggleSidebar(false)
         }
       }
+    },
+    registerSmoothScroll() {
+      const options = {
+        alwaysShowTracks: false, // 保持滚动条轨迹可见。
+        continuousScrolling: false, // 设置为true允许外部滚动条在当前滚动条到达边缘时继续滚动。
+        renderByPixels: true, // 以整数像素值渲染每一帧，设置true为提高滚动性能
+        damping: 0.2, // 阻尼系数，浮动值之间(0, 1)。值越低，滚动越平滑（绘制帧越多）。
+        thumbMinSize: 20, // 滚动条拇指的最小尺寸。
+        plugins: {
+          overscroll: {
+            effect: 'glow',
+            maxOverscroll: 150,
+            damping: 0.2,
+            glowColor: '#222a2d'
+          }
+        }
+      }
+      Scrollbar.use(OverscrollPlugin)
+      this._scroll = Scrollbar.init(document.querySelector('.scroll-main'), options)
+      this._scroll.addListener(status => {
+        this.offsetProgress = (status.offset.y * 100 / status.limit.y) - 100
+      })
+    },
+    // 移除事件监听
+    removeSmoothScroll() {
+      Scrollbar.destroy(this._scroll)
     }
   }
 }
@@ -127,8 +132,10 @@ export default {
   .current-read {
     position: fixed;
     z-index: 100;
+    width: 100%;
     height: 3px;
-    background-color: red;
+    background-color: rgba(0, 143, 104, 0.95);
+    transform: translate3d(-100%, 0, 0);
   }
 
   .scroll-main {
