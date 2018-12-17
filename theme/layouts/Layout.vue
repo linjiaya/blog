@@ -27,8 +27,6 @@
 <script>
 import Vue from 'vue'
 import nprogress from 'nprogress'
-import Scrollbar from 'smooth-scrollbar'
-import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll'
 import initQuicklink from '../utils/quicklink.js'
 
 export default {
@@ -89,31 +87,39 @@ export default {
         }
       }
     },
-    registerSmoothScroll() {
-      const options = {
-        alwaysShowTracks: false, // 保持滚动条轨迹可见。
-        continuousScrolling: false, // 设置为true允许外部滚动条在当前滚动条到达边缘时继续滚动。
-        renderByPixels: true, // 以整数像素值渲染每一帧，设置true为提高滚动性能
-        damping: 0.2, // 阻尼系数，浮动值之间(0, 1)。值越低，滚动越平滑（绘制帧越多）。
-        thumbMinSize: 20, // 滚动条拇指的最小尺寸。
-        plugins: {
-          overscroll: {
-            effect: 'glow',
-            maxOverscroll: 150,
-            damping: 0.2,
-            glowColor: '#222a2d'
+    async registerSmoothScroll() {
+      try {
+        const [{default: Scrollbar}, {default: OverscrollPlugin}] = await Promise.all([import('smooth-scrollbar'), import('smooth-scrollbar/plugins/overscroll')])
+        const options = {
+          alwaysShowTracks: false, // 保持滚动条轨迹可见。
+          continuousScrolling: false, // 设置为true允许外部滚动条在当前滚动条到达边缘时继续滚动。
+          renderByPixels: true, // 以整数像素值渲染每一帧，设置true为提高滚动性能
+          damping: 0.2, // 阻尼系数，浮动值之间(0, 1)。值越低，滚动越平滑（绘制帧越多）。
+          thumbMinSize: 20, // 滚动条拇指的最小尺寸。
+          plugins: {
+            overscroll: {
+              effect: 'glow',
+              maxOverscroll: 150,
+              damping: 0.2,
+              glowColor: '#222a2d'
+            }
           }
         }
+        this._scrollbar = Scrollbar
+        Scrollbar.use(OverscrollPlugin)
+        this._scroll = Scrollbar.init(document.querySelector('.scroll-main'), options)
+        this._scroll.addListener(status => {
+          this.offsetProgress = (status.offset.y * 100 / status.limit.y) - 100
+        })
+      } catch (error) {
+        console.error(error)
       }
-      Scrollbar.use(OverscrollPlugin)
-      this._scroll = Scrollbar.init(document.querySelector('.scroll-main'), options)
-      this._scroll.addListener(status => {
-        this.offsetProgress = (status.offset.y * 100 / status.limit.y) - 100
-      })
     },
     // 移除事件监听
     removeSmoothScroll() {
-      Scrollbar.destroy(this._scroll)
+      if (this._scrollbar && this._scroll) {
+        this._scrollbar.destroy(this._scroll)
+      }
     }
   },
   watch: {
@@ -123,7 +129,7 @@ export default {
       handler(val) {
         console.log(val, 'contentloaded')
         if (val === true) {
-          initQuicklink()
+          initQuicklink(document)
         }
       }
     }
