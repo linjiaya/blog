@@ -23,7 +23,7 @@ description: RoadMap
 ### feature
 
 - [x] post description. if provide `frontmatter.desciption`, it will be used. else extract the 60 words of Post as description. [see detail](/#post-description)
-- [ ] pageSize & readTime of per Post.
+- [x] pageSize & readTime of per Post.
 - [ ] frontMatter generator. Auto generate author, title, tags, categories.
 - [x] content loader for loading iframe resource. [see detail](/#iframe-loader)
 - [ ] live preview. the `vue component` can run in the Post with editing the code in real time
@@ -37,6 +37,7 @@ description: RoadMap
 - [ ] scrollbar improvement. [smooth-scrollbar](https://github.com/idiotWu/smooth-scrollbar), [more](https://github.com/EliazTray?tab=stars&utf8=%E2%9C%93&q=scroll)
 - [ ] [https://codepen.io/joshuaward/pen/aQXLPa](https://codepen.io/joshuaward/pen/aQXLPa)
 - [ ] iframe loader 加载完 iframe，当出现在视窗时会抖动，不知道什么原因?
+- [ ] code-surfer with fullscreen! thats sounds wonderful~~:)
 
 #### Post description
 
