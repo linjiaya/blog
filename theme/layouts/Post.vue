@@ -69,7 +69,6 @@ export default {
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css">
-/* https://github.com/PrismJS/prism/tree/master/themes */
 </style>
 <style lang="stylus" src="@parent-theme/styles/theme.styl">
 </style>
@@ -84,6 +83,13 @@ export default {
   border-bottom: 1px solid rgba(114, 186, 94, 0.55);
   border-left: 1px solid rgba(114, 186, 94, 0.55);
   background-color: rgba(114, 186, 94, 0.05);
+
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
 }
 
 .rec-list {
