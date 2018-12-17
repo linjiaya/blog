@@ -4,9 +4,9 @@
       <nav class="breadcrumbs">
         <div class="page-size">
           <span>文章字数约:</span>
-          <span>{{$frontmatter.pageSize}}</span>
+          <span>{{$frontmatter.pageSize}} words</span>
           <span class="page-pre">预计阅读:</span>
-          <span>{{$frontmatter.readTime}}</span>
+          <span>{{$frontmatter.readTime}} min</span>
         </div>
         <ul class="rec-list is-category" v-if="categoryList.length">
           <li class="item" v-for="(category, index) in categoryList" :key="index">
@@ -115,7 +115,12 @@ export default {
 
 .page-size {
   padding: 6px 0;
+  color: #3eaf7c;
   font-size: 0.8rem;
+
+  span:nth-child(2n) {
+    color: #efbb35;
+  }
 
   .page-pre {
     margin-left: 10px;
