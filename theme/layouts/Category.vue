@@ -64,6 +64,13 @@ export default {
   max-width: 74rem;
   margin: 0 auto;
 
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
   h1 {
     margin-top: 0.4em;
     margin-bottom: 0.2em;
@@ -95,57 +102,58 @@ export default {
     text-align: center;
     word-break: normal;
   }
-}
 
-.category-item {
-  margin: 1rem 0.7rem;
-  background: linear-gradient(135deg, #41b883 10px, rgba(0, 0, 0, 0.01) 0);
-  transition: all 0.2s;
+  .category-item {
+    margin: 1rem 0.7rem;
+    background: linear-gradient(135deg, #41b883 10px, rgba(0, 0, 0, 0.01) 0);
+    transition: all 0.2s;
 
-  &:hover {
-    transform: translateY(-2px);
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  .category-item-a {
+    display: flex;
+    min-height: 200px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1.25rem;
+    border-radius: 3px;
+    box-shadow: 1px 1px 15px rgba(67, 38, 100, 0.15);
+  }
+
+  input.filter {
+    width: 500px;
+    max-width: 100%;
+    margin-bottom: 2.2rem;
+  }
+
+  input.bottom-subscribe {
+    display: block;
+    height: 2.5em;
+    margin: 0 auto;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #6db65b;
+    background: #fcfcfc;
+    border-radius: 8px;
+    color: #555;
+    font-size: 17px;
+    text-align: center;
+    transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
+  }
+
+  input:focus {
+    border-color: var(--subtle);
+    box-shadow: 0 0 5px var(--subtle);
+    outline: 0;
+  }
+
+  .mr-30 {
+    margin-top: 30px;
   }
 }
 
-.category-item-a {
-  display: flex;
-  min-height: 200px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  padding: 1.25rem;
-  border-radius: 3px;
-  box-shadow: 1px 1px 15px rgba(67, 38, 100, 0.15);
-}
-
-input.filter {
-  width: 500px;
-  max-width: 100%;
-  margin-bottom: 2.2rem;
-}
-
-input.bottom-subscribe {
-  display: block;
-  height: 2.5em;
-  margin: 0 auto;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #6db65b;
-  background: #fcfcfc;
-  border-radius: 8px;
-  color: #555;
-  font-size: 17px;
-  text-align: center;
-  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
-}
-
-input:focus {
-  border-color: var(--subtle);
-  box-shadow: 0 0 5px var(--subtle);
-  outline: 0;
-}
-
-.mr-30 {
-  margin-top: 30px;
-}
 </style>

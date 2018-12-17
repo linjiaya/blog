@@ -29,12 +29,16 @@ import Vue from 'vue'
 import nprogress from 'nprogress'
 import Scrollbar from 'smooth-scrollbar'
 import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll'
+import initQuicklink from '../utils/quicklink.js'
 
 export default {
   computed: {
     pageClasses() {
       const userPageClass = this.$page.frontmatter.pageClass
       return [userPageClass]
+    },
+    contentMounted() {
+      return this.$vuepress.$get('contentMounted')
     }
   },
   data() {
@@ -110,6 +114,18 @@ export default {
     // 移除事件监听
     removeSmoothScroll() {
       Scrollbar.destroy(this._scroll)
+    }
+  },
+  watch: {
+    // 当文章加载完成时, 调用qiucklink
+    contentMounted: {
+      immediate: true,
+      handler(val) {
+        console.log(val, 'contentloaded')
+        if (val === true) {
+          initQuicklink()
+        }
+      }
     }
   }
 }

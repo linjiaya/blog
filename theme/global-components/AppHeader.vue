@@ -23,7 +23,8 @@
 import get from 'lodash-es/get'
 export default {
   name: 'AppHeader',
-  computed: {
+  watch: {
+
   }
 }
 </script>
@@ -34,6 +35,13 @@ $mrl: 140px;
 .app-header {
   display: flex;
   background: linear-gradient(to right, rgba(107, 183, 86, 0.95), #008f68);
+
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
 
   .category-ul {
     display: flex;
