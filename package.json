@@ -5,7 +5,7 @@
   "scripts": {
     "build": "vuepress build blog",
     "lint": "vue-cli-service lint",
-    "dev": "vuepress dev blog -d --temp .temp",
+    "dev": "vuepress dev blog --temp .temp --debug",
     "dev:debug": "node --inspect-brk ./node_modules/.bin/vuepress dev blog",
     "lint:js": "eslint --ext .js,.vue .",
     "lint:css": "stylelint '**/*.{vue,scss}'",
@@ -29,10 +29,10 @@
     "@vue/cli-plugin-babel": "^3.1.1",
     "@vue/cli-plugin-eslint": "^3.1.5",
     "@vue/cli-service": "^3.1.4",
-    "@vuepress/plugin-blog": "^1.0.0-alpha.27",
-    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.27",
-    "@vuepress/plugin-pwa": "^1.0.0-alpha.27",
-    "@vuepress/plugin-register-components": "^1.0.0-alpha.27",
+    "@vuepress/plugin-blog": "^1.0.0-alpha.29",
+    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.29",
+    "@vuepress/plugin-pwa": "^1.0.0-alpha.29",
+    "@vuepress/plugin-register-components": "^1.0.0-alpha.29",
     "babel-eslint": "^10.0.1",
     "chalk": "^2.3.2",
     "dayjs": "^1.7.7",
@@ -52,7 +52,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.5.17",
-    "vuepress": "^1.0.0-alpha.27"
+    "vuepress": "^1.0.0-alpha.29"
   },
   "gitHooks": {
     "pre-commit": "lint-staged",
